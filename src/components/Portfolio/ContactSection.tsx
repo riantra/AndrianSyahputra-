@@ -264,22 +264,7 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Download CV */}
-            <Card className="card-elegant p-6">
-              <div className="text-center space-y-4">
-                <h4 className="font-bold">Download My Resume</h4>
-                <p className="text-sm text-muted-foreground">
-                  Get a detailed overview of my experience and qualifications
-                </p>
-                <Button 
-                  className="btn-primary w-full"
-                  onClick={handleDownloadCV}
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download CV (PDF)
-                </Button>
-              </div>
-            </Card>
+
           </div>
 
           {/* Contact Form */}
@@ -389,57 +374,7 @@ const ContactSection = () => {
                 </div>
               </form>
             </Card>
-
-            {/* Quick Contact Options */}
-            <div className="mt-8 grid md:grid-cols-2 gap-4">
-              <Card className="p-6 text-center card-elegant hover:scale-105 transition-transform">
-                <Mail className="w-8 h-8 text-primary mx-auto mb-3" />
-                <h4 className="font-semibold mb-2">Email Me Directly</h4>
-                <p className="text-sm text-muted-foreground mb-4">
-                  For detailed project discussions
-                </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  andriancodings@gmail.com
-                </Button>
-              </Card>
-
-              <Card className="p-6 text-center card-elegant hover:scale-105 transition-transform">
-                <Linkedin className="w-8 h-8 text-primary mx-auto mb-3" />
-                <h4 className="font-semibold mb-2">Connect on LinkedIn</h4>
-                <p className="text-sm text-muted-foreground mb-4">
-                  For professional networking
-                </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  linkedin.com/in/riantra
-                </Button>
-              </Card>
-            </div>
           </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="mt-20 text-center">
-          <Card className="card-elegant p-12 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold mb-4">
-              Ready to Work Together?
-            </h3>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Whether you need a senior QA engineer for your team, want to discuss a project, 
-              or explore collaboration opportunities, I'd love to hear from you.
-            </p>
-            <div className="flex justify-center">
-              <Button 
-                size="lg" 
-                className="btn-primary"
-                onClick={() => {
-                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                Start a Conversation
-              </Button>
-            </div>
-          </Card>
         </div>
       </div>
     </section>

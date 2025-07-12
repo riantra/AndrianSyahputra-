@@ -87,7 +87,7 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold">Andrian Syahputra</h3>
-                <p className="text-background/70">Senior QA Engineer</p>
+                <p className="text-background/70">QA Engineer</p>
               </div>
             </div>
             
@@ -181,9 +181,7 @@ const Footer = () => {
         <div className="py-8 border-t border-background/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-background/70 text-sm">
-              <span>© {currentYear} Andrian Syahputra. Made with</span>
-              <Heart className="w-4 h-4 text-red-400" />
-              <span>and lots of coffee.</span>
+              <span>© {currentYear} Andrian Syahputra.</span>
             </div>
             
             <div className="flex items-center gap-4">

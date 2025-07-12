@@ -138,9 +138,6 @@
 
 @layer components {
   /* Premium Component Styles */
-  .gradient-text {
-    color: inherit;
-  }
 
   .card-elegant {
     @apply bg-card border border-border rounded-xl p-6;

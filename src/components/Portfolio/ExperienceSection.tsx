@@ -37,7 +37,7 @@ const ExperienceSection = () => {
       company: "NerdHeadz",
       location: "Remote - Russia",
       period: "May 2024 - Present",
-      type: "Contract",
+      type: "Full-time",
       projects: [
         {
           name: "Multi-Platform QA Leadership",
@@ -57,7 +57,7 @@ const ExperienceSection = () => {
       company: "Pradini",
       location: "Remote - Indonesia",
       period: "June 2024 - August 2024",
-      type: "Contract",
+      type: "Full-time",
       projects: [
         {
           name: "Healthcare Mobile Application",
