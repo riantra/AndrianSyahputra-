@@ -225,7 +225,7 @@ const ProjectsSection = () => {
             </p>
             <Button size="lg" className="btn-primary">
               <ExternalLink className="w-5 h-5 mr-2" />
-              View All Projects
+              Feel Free To Ask Me
             </Button>
           </div>
         </div>
