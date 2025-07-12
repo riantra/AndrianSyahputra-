@@ -6,80 +6,106 @@ import { ExternalLink, Github, CheckCircle2, Zap, Shield, BarChart3 } from "luci
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "GPS-Based Logistics Tracking System",
+      title: "LSI Apical - Advanced Logistics Platform",
       company: "PT. Trans Teknologi Indonesia",
-      description: "Enterprise-grade logistics tracking platform with real-time GPS monitoring, route optimization, and fleet management capabilities. Handles thousands of vehicles and personnel across Indonesia.",
+      description: "Next-generation logistics management system with real-time tracking, automated routing, and comprehensive analytics. Integrated with multiple payment gateways and third-party logistics providers.",
       category: "Logistics & Transportation",
       icon: BarChart3,
-      technologies: ["React", "Node.js", "PostgreSQL", "GPS Integration", "Real-time Tracking"],
+      technologies: ["React", "Node.js", "PostgreSQL", "GPS Integration", "Payment APIs", "Microservices"],
       achievements: [
-        "98% bug-free release rate with zero critical issues in production",
-        "75% improvement in tracking precision across fleet operations",
+        "98% bug-free release rate with zero critical production issues",
+        "75% improvement in tracking precision across fleet operations", 
         "Reduced customer complaints by 85% through enhanced reliability",
-        "Successfully integrated with 5+ third-party GPS hardware providers"
+        "Successfully integrated with 8+ payment providers and logistics partners",
+        "Optimized system performance handling 50,000+ concurrent users"
       ],
       metrics: {
         "Bug-Free Rate": "98%",
         "Performance Improvement": "75%",
-        "Test Coverage": "92%"
+        "User Capacity": "50K+"
       },
-      impact: "Revolutionized logistics operations for Indonesia's leading transportation company, serving 10,000+ daily active users.",
-      role: "Lead QA Engineer responsible for test strategy, automation framework, and quality assurance across mobile and web platforms."
+      impact: "Revolutionized logistics operations for Indonesia's leading transportation company, serving 50,000+ daily active users across multiple regions.",
+      role: "Lead QA Engineer responsible for end-to-end testing strategy, automation framework, and quality assurance across web and mobile platforms."
+    },
+    {
+      title: "Storyed - AI Voice-Powered Book Creator",
+      company: "Independent Project",
+      description: "Innovative mobile application that transforms voice recordings into structured digital books using advanced AI. Features voice-to-text conversion, intelligent chapter organization, and automated editing suggestions.",
+      category: "AI & Creative Technology",
+      icon: Zap,
+      technologies: ["AI/ML", "React Native", "Speech Recognition", "Natural Language Processing", "Cloud APIs"],
+      achievements: [
+        "Developed comprehensive AI testing framework for voice recognition accuracy",
+        "Achieved 94% accuracy in voice-to-text conversion across multiple languages",
+        "Validated AI-driven content organization and chapter structuring",
+        "Ensured seamless cross-platform functionality on iOS and Android",
+        "Optimized AI processing to reduce conversion time by 60%"
+      ],
+      metrics: {
+        "Voice Accuracy": "94%",
+        "Processing Speed": "+60%",
+        "User Satisfaction": "92%"
+      },
+      impact: "Empowered content creators to easily transform spoken ideas into published digital books, democratizing the book creation process.",
+      role: "AI QA Specialist focused on voice recognition testing, AI algorithm validation, and ensuring consistent performance across different accents and languages."
+    },
+    {
+      title: "Clearjet - Delivery Infrastructure Platform",
+      company: "NerdHeadz",
+      description: "Comprehensive delivery management platform providing real-time logistics solutions, route optimization, and fleet management for e-commerce and logistics companies worldwide.",
+      category: "Logistics & E-commerce",
+      icon: Shield,
+      technologies: ["Microservices", "React", "Node.js", "Redis", "PostgreSQL", "Real-time Analytics"],
+      achievements: [
+        "Implemented robust testing framework reducing critical bugs by 90%",
+        "Validated real-time tracking accuracy across multiple time zones",
+        "Ensured 99.9% uptime through comprehensive load testing",
+        "Optimized API response times to under 200ms globally",
+        "Successfully scaled platform to handle 100,000+ daily deliveries"
+      ],
+      metrics: {
+        "Uptime": "99.9%",
+        "API Response": "<200ms",
+        "Daily Deliveries": "100K+"
+      },
+      impact: "Streamlined delivery operations for 500+ businesses globally, reducing delivery times by 40% and improving customer satisfaction.",
+      role: "Senior QA Engineer specializing in distributed systems testing, performance optimization, and real-time data validation."
     },
     {
       title: "AI-Powered Student Learning Platform (FutureSpark)",
-      company: "NerdHeadz",
+      company: "NerdHeadz", 
       description: "Advanced educational platform leveraging AI to provide personalized learning experiences, adaptive content delivery, and intelligent progress tracking for students worldwide.",
       category: "Education Technology",
       icon: Zap,
-      technologies: ["AI/ML", "React", "Python", "TensorFlow", "Natural Language Processing"],
+      technologies: ["AI/ML", "React", "Python", "TensorFlow", "Natural Language Processing", "Adaptive Learning"],
       achievements: [
         "Designed comprehensive test cases for adaptive learning algorithms",
-        "Validated AI-generated student progress reports for accuracy",
+        "Validated AI-generated student progress reports for 95% accuracy",
         "Ensured data integrity across complex AI recommendation systems",
-        "95% accuracy rate in AI-based learning path recommendations"
+        "Tested personalized learning paths for optimal educational outcomes",
+        "Verified AI bias prevention in content recommendations"
       ],
       metrics: {
         "AI Accuracy": "95%",
         "User Engagement": "+65%",
         "Learning Outcomes": "+40%"
       },
-      impact: "Enhanced learning outcomes for 50,000+ students through AI-driven personalized education experiences.",
-      role: "AI-focused QA specialist ensuring quality and reliability of machine learning algorithms and educational content delivery."
-    },
-    {
-      title: "Job Marketplace with AI Recommendations (Fixzanet)",
-      company: "NerdHeadz",
-      description: "Intelligent job marketplace platform utilizing AI to match candidates with ideal positions based on skills, preferences, and career goals. Features advanced recommendation engine and real-time matching.",
-      category: "Career & Employment",
-      icon: Shield,
-      technologies: ["AI Matching", "Microservices", "React", "Python", "Elasticsearch"],
-      achievements: [
-        "Validated AI-based job matching accuracy achieving 88% relevance score",
-        "Tested complex recommendation algorithms for career advancement",
-        "Ensured data privacy compliance across international regulations",
-        "Optimized matching speed to under 2 seconds response time"
-      ],
-      metrics: {
-        "Match Accuracy": "88%",
-        "Response Time": "<2s",
-        "User Satisfaction": "94%"
-      },
-      impact: "Connected 25,000+ job seekers with ideal positions through intelligent AI matching, reducing hiring time by 60%.",
-      role: "Senior QA Engineer specializing in AI algorithm testing, data validation, and performance optimization for recommendation systems."
+      impact: "Enhanced learning outcomes for 50,000+ students through AI-driven personalized education experiences across 15+ countries.",
+      role: "AI-focused QA specialist ensuring quality and reliability of machine learning algorithms and educational content delivery systems."
     },
     {
       title: "Healthcare Mobile App for Premature Baby Care",
       company: "Pradini",
       description: "Specialized mobile application providing medical insights, care guidelines, and tracking tools for parents of premature babies. Features expert medical content and progress monitoring.",
-      category: "Healthcare Technology",
+      category: "Healthcare Technology", 
       icon: Shield,
-      technologies: ["React Native", "Firebase", "Medical APIs", "iOS", "Android"],
+      technologies: ["React Native", "Firebase", "Medical APIs", "iOS", "Android", "Healthcare Compliance"],
       achievements: [
         "Achieved 95% bug-free mobile releases across iOS and Android",
         "Verified medical content accuracy with healthcare professionals",
         "Ensured HIPAA compliance for sensitive medical data",
-        "45% increase in user trust and adoption rates"
+        "45% increase in user trust and adoption rates",
+        "Validated integration with medical device APIs"
       ],
       metrics: {
         "Bug-Free Rate": "95%",
@@ -87,7 +113,7 @@ const ProjectsSection = () => {
         "Platform Coverage": "100%"
       },
       impact: "Supported 5,000+ families with critical premature baby care information, improving care outcomes and parental confidence.",
-      role: "Mobile QA specialist focused on cross-platform testing, medical data validation, and user experience optimization."
+      role: "Mobile QA specialist focused on cross-platform testing, medical data validation, and user experience optimization in healthcare applications."
     }
   ];
 

@@ -27,9 +27,10 @@ const AboutSection = () => {
   ];
 
   const skills = [
-    "Test Automation", "API Testing", "Cypress", "Selenium", "Playwright", 
-    "Appium", "Performance Testing", "Agile Methodologies", "Test Strategy",
-    "CI/CD Integration", "Bug Reporting", "Quality Assurance"
+    "AI Testing", "Machine Learning Validation", "Test Automation", "API Testing", 
+    "Cypress", "Selenium", "Playwright", "Appium", "Performance Testing", 
+    "Agile Methodologies", "Test Strategy", "CI/CD Integration", "Bug Reporting", 
+    "Voice Recognition Testing", "No-Code Testing", "Quality Assurance"
   ];
 
   return (
@@ -70,10 +71,11 @@ const AboutSection = () => {
               </p>
               
               <p>
-                I'm particularly passionate about leveraging AI-focused QA methodologies and have led 
-                initiatives that resulted in 40% efficiency gains in testing processes. My experience 
-                includes international remote collaboration, having worked with teams across different 
-                time zones and cultural backgrounds.
+                I'm particularly passionate about AI testing and validation, with specialized expertise 
+                in testing machine learning algorithms, voice recognition systems, and intelligent 
+                recommendation engines. I've led initiatives that resulted in 40% efficiency gains in 
+                testing processes and have extensive experience with international remote collaboration 
+                across different time zones and cultural backgrounds.
               </p>
               
               <p>
