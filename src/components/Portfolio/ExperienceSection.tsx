@@ -36,7 +36,7 @@ const ExperienceSection = () => {
       title: "Freelancer Quality Assurance Engineer",
       company: "NerdHeadz",
       location: "Remote - Russia",
-      period: "May 2024 - May 2025",
+      period: "May 2024 - Present",
       type: "Contract",
       projects: [
         {
