@@ -29,7 +29,7 @@ const ProjectsSection = () => {
     },
     {
       title: "Storyed - AI Voice-Powered Book Creator",
-      company: "Independent Project",
+      company: "NerdHeadz",
       description: "Innovative mobile application that transforms voice recordings into structured digital books using advanced AI. Features voice-to-text conversion, intelligent chapter organization, and automated editing suggestions.",
       category: "AI & Creative Technology",
       icon: Zap,
