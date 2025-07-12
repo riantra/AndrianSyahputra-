@@ -139,7 +139,7 @@
 @layer components {
   /* Premium Component Styles */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    color: inherit;
   }
 
   .card-elegant {

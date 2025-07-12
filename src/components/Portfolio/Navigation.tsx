@@ -1,10 +1,29 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Download, Mail } from "lucide-react";
+import { toast } from "sonner";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleDownloadCV = () => {
+    try {
+      // Create a temporary anchor element
+      const link = document.createElement('a');
+      link.href = '/AndrianSyahputra_CV.pdf';
+      link.download = 'AndrianSyahputra_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Optional: Show success message
+      toast.success('CV download started!');
+    } catch (error) {
+      console.error('Error downloading CV:', error);
+      toast.error('Failed to download CV. Please try again.');
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,6 +94,7 @@ const Navigation = () => {
             <Button 
               size="sm" 
               className="btn-primary"
+              onClick={handleDownloadCV}
             >
               <Download className="w-4 h-4 mr-2" />
               Resume
@@ -120,6 +140,7 @@ const Navigation = () => {
                 <Button 
                   size="sm" 
                   className="btn-primary w-full"
+                  onClick={handleDownloadCV}
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Resume

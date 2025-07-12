@@ -223,7 +223,16 @@ const ProjectsSection = () => {
             <p className="text-muted-foreground">
               These are just highlights of my work. I'd be happy to discuss other projects and share detailed case studies.
             </p>
-            <Button size="lg" className="btn-primary">
+            <Button 
+              size="lg" 
+              className="btn-primary"
+              onClick={() => {
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm) {
+                  contactForm.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               <ExternalLink className="w-5 h-5 mr-2" />
               Feel Free To Ask Me
             </Button>

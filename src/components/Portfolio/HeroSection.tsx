@@ -1,7 +1,31 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Mail, MapPin } from "lucide-react";
+import { toast } from "sonner";
 
 const HeroSection = () => {
+  const handleDownloadCV = () => {
+    try {
+      const link = document.createElement('a');
+      link.href = '/AndrianSyahputra_CV.pdf';
+      link.download = 'Andrian_Syahputra_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Show success message
+      toast.success('CV download started!');
+    } catch (error) {
+      console.error('Error downloading CV:', error);
+      toast.error('Failed to download CV. Please try again.');
+    }
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-form');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <section className="section-hero relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Pattern */}
@@ -20,7 +44,7 @@ const HeroSection = () => {
                 Hi, I'm <span className="gradient-text">Andrian</span>
               </h1>
               <p className="text-xl lg:text-2xl text-white/90 font-medium">
-                Senior Quality Assurance Engineer
+                Quality Assurance Engineer
               </p>
               <div className="flex items-center justify-center lg:justify-start gap-2 text-white/80">
                 <MapPin className="w-5 h-5" />
@@ -29,18 +53,28 @@ const HeroSection = () => {
             </div>
             
             <p className="text-lg text-white/80 leading-relaxed max-w-xl">
-              Dynamic QA Engineer with 2+ years of experience ensuring software excellence across 
-              diverse industries. Specialized in test automation, API testing, and delivering 95%+ 
-              bug-free releases with cutting-edge methodologies.
+              Expert in AI/ML testing, test automation, and quality assurance across web, mobile, and enterprise applications. 
+              Proven track record in implementing cutting-edge testing solutions, from AI-powered test automation to 
+              performance and security testing. Passionate about delivering flawless user experiences through 
+              comprehensive testing strategies and innovative quality assurance approaches.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="btn-primary glass-effect group">
+              <Button 
+                size="lg" 
+                className="btn-primary glass-effect group"
+                onClick={scrollToContact}
+              >
                 <Mail className="w-5 h-5 mr-2" />
                 Get In Touch
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-white text-foreground hover:bg-white/90 border-white/30 hover:border-white/50"
+                onClick={handleDownloadCV}
+              >
                 <Download className="w-5 h-5 mr-2" />
                 Download CV
               </Button>
@@ -50,15 +84,15 @@ const HeroSection = () => {
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center lg:text-left">
                 <div className="text-3xl font-bold text-white">2+</div>
-                <div className="text-white/70">Years Experience</div>
+                <div className="text-white/70">Years in QA</div>
               </div>
               <div className="text-center lg:text-left">
                 <div className="text-3xl font-bold text-white">95%+</div>
-                <div className="text-white/70">Bug-Free Releases</div>
+                <div className="text-white/70">Test Coverage</div>
               </div>
               <div className="text-center lg:text-left">
                 <div className="text-3xl font-bold text-white">10+</div>
-                <div className="text-white/70">Projects Delivered</div>
+                <div className="text-white/70">Projects Tested</div>
               </div>
             </div>
           </div>
