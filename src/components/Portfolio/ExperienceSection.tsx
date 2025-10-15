@@ -8,7 +8,7 @@ const ExperienceSection = () => {
       title: "Quality Assurance Engineer",
       company: "PT. Trans Teknologi Indonesia",
       location: "Bandung, Indonesia",
-      period: "October 2023 - Present",
+      period: "October 2023 - Present (2 Years)",
       type: "Full-time",
       projects: [
         {
@@ -36,7 +36,7 @@ const ExperienceSection = () => {
       title: "Freelancer Quality Assurance Engineer",
       company: "NerdHeadz",
       location: "Remote - Russia",
-      period: "May 2024 - Present",
+      period: "May 2024 - Present (1.6 Years)",
       type: "Full-time",
       projects: [
         {

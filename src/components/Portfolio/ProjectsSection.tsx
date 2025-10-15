@@ -6,6 +6,29 @@ import { ExternalLink, Github, CheckCircle2, Zap, Shield, BarChart3 } from "luci
 const ProjectsSection = () => {
   const projects = [
     {
+      title: "Cobeu - AI-Powered Pet Community Platform",
+      company: "NerdHeadz",
+      description: "Comprehensive pet care and community platform combining GPS-based location services, appointment booking, social networking, and AI-driven pet care recommendations. Features real-time location tracking for pet services, community forums, and intelligent health monitoring.",
+      category: "Pet Care & Social Technology",
+      icon: Zap,
+      technologies: ["React Native", "AI/ML", "GPS Integration", "Real-time Chat", "Booking System", "Social Features", "Cloud Infrastructure"],
+      achievements: [
+        "Implemented end-to-end QA for complex GPS-based pet service location features",
+        "Validated AI-driven pet health recommendations and care suggestions with 96% accuracy",
+        "Ensured seamless integration of booking system with 15+ pet service providers",
+        "Tested real-time community features supporting 10,000+ concurrent users",
+        "Achieved 97% bug-free release rate across iOS and Android platforms",
+        "Optimized social media features increasing user engagement by 70%"
+      ],
+      metrics: {
+        "AI Accuracy": "96%",
+        "Bug-Free Rate": "97%",
+        "User Engagement": "+70%"
+      },
+      impact: "Connected 25,000+ pet owners with verified service providers, creating a trusted ecosystem for comprehensive pet care and community engagement.",
+      role: "Lead QA Engineer responsible for testing GPS location accuracy, AI recommendation systems, booking workflows, and social media features across mobile platforms."
+    },
+    {
       title: "LSI Apical - Advanced Logistics Platform",
       company: "PT. Trans Teknologi Indonesia",
       description: "Next-generation logistics management system with real-time tracking, automated routing, and comprehensive analytics. Integrated with multiple payment gateways and third-party logistics providers.",
