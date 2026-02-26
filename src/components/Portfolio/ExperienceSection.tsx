@@ -1,33 +1,46 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Building2, CheckCircle2 } from "lucide-react";
+import { Calendar, MapPin, Building2, CheckCircle2, ArrowUpRight } from "lucide-react";
 
 const ExperienceSection = () => {
   const experiences = [
     {
-      title: "Quality Assurance Engineer",
-      company: "PT. Trans Teknologi Indonesia",
+      title: "Quality Assurance Engineer → Project Manager",
+      company: "PT. Trans Teknologi Indonesia (Transtrack)",
       location: "Bandung, Indonesia",
-      period: "October 2023 - Present (2 Years)",
+      period: "October 2023 - Present (3+ Years)",
       type: "Full-time",
-      projects: [
+      promoted: true,
+      sections: [
         {
-          name: "Logistic Service Integrator (LSI)",
+          name: "As Project Manager (2025 – Present)",
+          highlight: true,
           achievements: [
-            "Successfully launched a GPS-based logistics tracking system with 98% bug-free release rate",
-            "Improved tracking precision by 75% across fleet and personnel through rigorous mobile and GPS hardware testing",
-            "Actively participated in feature planning and flow design, detecting issues at conceptual stage",
-            "Provided proactive UX/UI improvement suggestions, collaborating with designers and developers",
-            "Created QA environments and documentation standards, increasing internal productivity by 80%"
+            "Managing cross-functional teams (Developers, QA, BA) across multiple enterprise projects",
+            "Restructured previously unorganized workflows into structured project delivery processes",
+            "Resolved technical and operational bottlenecks across ongoing projects",
+            "Successfully renegotiated multiple project alignments with clients",
+            "Rebuilt stakeholder trust and received direct client appreciation for system stabilization",
+            "Implemented time-tracking tools and Notion-based dashboards improving management visibility"
           ]
         },
         {
-          name: "MyTask Project (Management Apps)",
+          name: "Projects Managed",
           achievements: [
-            "Delivered 100% feature-compliant management system for internal task and productivity tracking",
-            "Led usability testing efforts resulting in 80% increase in app usability rating",
-            "Conducted detailed workflow validation ensuring seamless module integration",
-            "Collaborated closely with developers to refine complex backend logic"
+            "LSI Telematik (Client: Apical – APRIL Group) – Enterprise shipment monitoring with GPS tracking, weighbridge, and fleet monitoring",
+            "Halal Logistic Tracking System (Client: JAKIM – Malaysia) – Halal compliance ecosystem integrating GPS, E-Seal smart locks, and vendor certification",
+            "MyTask (Internal) – Productivity and workflow management application"
+          ]
+        },
+        {
+          name: "As Quality Assurance Engineer (2023 – 2025)",
+          achievements: [
+            "Delivered GPS-based logistics tracking system with 98% bug-free production release",
+            "Improved GPS and hardware tracking precision by 75% across fleet and personnel",
+            "Researched and implemented self-hosted test management tools, saving significant monthly operational expenses",
+            "Built automation frameworks reducing regression effort and improving release stability",
+            "Increased QA productivity by 80% through structured documentation and environment standardization",
+            "Mentored junior QA members and improved process maturity"
           ]
         }
       ]
@@ -38,16 +51,17 @@ const ExperienceSection = () => {
       location: "Remote - Russia",
       period: "May 2024 - Present (1.6 Years)",
       type: "Full-time",
-      projects: [
+      sections: [
         {
-          name: "Multi-Platform QA Leadership",
+          name: "Multi-Platform AI & Infrastructure QA",
           achievements: [
-            "Spearheaded QA initiatives across 6 high-impact products: Clearjet, Uplinked, Fixzanet/Fizza Net, Cytrus.Ai, Busybee, and FutureSpark",
-            "Led AI-focused QA efforts including adaptive learning logic testing and AI-generated report validation",
-            "Developed custom API automation framework reducing defect detection time by 50%",
-            "Built UI performance testing framework using Playwright with auto-reporting and live dashboards",
-            "Increased test coverage by 60% through scalable Cypress-based UI and API test scripts",
-            "Reduced developer debugging time by 90% through detailed, actionable bug reports"
+            "Spearheaded QA across 8+ products: ClearJet, Uplinked, Fixzanet/Fizza Net, Cytrus.Ai, Busybee, FutureSpark, Nexus, and Codebeu",
+            "Led AI-focused QA strategy: adaptive learning validation, AI-generated report integrity, predictive logic validation, and recommendation accuracy testing",
+            "Designed structured validation frameworks for AI outputs, anomaly detection, and dataset consistency",
+            "Built Playwright-based UI performance testing framework with auto-reporting dashboards",
+            "Increased test coverage by 60% through scalable Cypress UI & API automation architecture",
+            "Reduced developer debugging time by 90% through detailed, actionable bug reports",
+            "Collaborated in fully international remote team with consistent high-quality results"
           ]
         }
       ]
@@ -57,12 +71,12 @@ const ExperienceSection = () => {
       company: "Pradini",
       location: "Remote - Indonesia",
       period: "June 2024 - August 2024",
-      type: "Full-time",
-      projects: [
+      type: "Contract",
+      sections: [
         {
           name: "Healthcare Mobile Application",
           achievements: [
-            "Achieved 95% bug-free mobile application releases for premature baby care app",
+            "Achieved 95% bug-free mobile releases for premature baby care healthcare app",
             "Verified cross-platform functionality on iOS and Android ensuring consistent performance",
             "Conducted comprehensive regression testing preventing feature degradation",
             "Integrated medical insights increasing user trust and adoption by 45%"
@@ -72,31 +86,43 @@ const ExperienceSection = () => {
     }
   ];
 
+  const metrics = [
+    { value: "98%", label: "Bug-Free Release" },
+    { value: "75%", label: "Tracking Precision↑" },
+    { value: "60%", label: "Test Coverage↑" },
+    { value: "90%", label: "Debug Time↓" },
+  ];
+
   return (
-    <section className="py-20 bg-background">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+        <div className="text-center mb-16 space-y-4">
+          <p className="font-mono text-xs text-accent uppercase tracking-[0.2em]">Career Path</p>
+          <h2 className="text-4xl lg:text-5xl font-bold">
             Professional <span className="gradient-text">Experience</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A track record of delivering exceptional software quality across diverse industries 
-            and challenging projects with measurable impact.
-          </p>
+          <div className="section-divider mt-4"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-5xl mx-auto space-y-8">
           {experiences.map((experience, index) => (
-            <Card key={index} className="card-elegant p-8">
+            <Card key={index} className="card-elegant p-8 relative overflow-hidden">
+              {experience.promoted && (
+                <div className="absolute top-0 right-0 px-4 py-1.5 text-xs font-mono font-semibold text-accent-foreground rounded-bl-xl" style={{ background: 'var(--gradient-primary)' }}>
+                  <ArrowUpRight className="w-3 h-3 inline mr-1" />
+                  PROMOTED
+                </div>
+              )}
+              
               {/* Header */}
-              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 pb-6 border-b border-border">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 pb-6 border-b border-border">
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold">{experience.title}</h3>
+                  <h3 className="text-2xl font-bold font-heading">{experience.title}</h3>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Building2 className="w-4 h-4" />
-                    <span className="font-medium">{experience.company}</span>
+                    <span className="font-semibold">{experience.company}</span>
                   </div>
-                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground font-mono">
                     <div className="flex items-center gap-1">
                       <MapPin className="w-4 h-4" />
                       {experience.location}
@@ -107,23 +133,23 @@ const ExperienceSection = () => {
                     </div>
                   </div>
                 </div>
-                <Badge variant="secondary" className="self-start lg:self-center">
+                <Badge variant="secondary" className="self-start lg:self-center mt-3 lg:mt-0 font-mono text-xs">
                   {experience.type}
                 </Badge>
               </div>
 
-              {/* Projects */}
-              <div className="space-y-6">
-                {experience.projects.map((project, projectIndex) => (
-                  <div key={projectIndex} className="space-y-4">
-                    <h4 className="text-xl font-semibold text-primary">
-                      {project.name}
+              {/* Sections */}
+              <div className="space-y-8">
+                {experience.sections.map((section, sectionIndex) => (
+                  <div key={sectionIndex} className="space-y-4">
+                    <h4 className={`text-lg font-semibold font-heading ${section.highlight ? 'text-accent' : 'text-primary'}`}>
+                      {section.name}
                     </h4>
                     <div className="space-y-3">
-                      {project.achievements.map((achievement, achievementIndex) => (
-                        <div key={achievementIndex} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
-                          <p className="text-muted-foreground leading-relaxed">
+                      {section.achievements.map((achievement, achIndex) => (
+                        <div key={achIndex} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                          <p className="text-muted-foreground leading-relaxed text-sm">
                             {achievement}
                           </p>
                         </div>
@@ -138,22 +164,12 @@ const ExperienceSection = () => {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-          <Card className="text-center p-6 card-elegant">
-            <div className="text-3xl font-bold gradient-text mb-2">98%</div>
-            <div className="text-muted-foreground">Bug-Free Release Rate</div>
-          </Card>
-          <Card className="text-center p-6 card-elegant">
-            <div className="text-3xl font-bold gradient-text mb-2">75%</div>
-            <div className="text-muted-foreground">Tracking Precision Improvement</div>
-          </Card>
-          <Card className="text-center p-6 card-elegant">
-            <div className="text-3xl font-bold gradient-text mb-2">60%</div>
-            <div className="text-muted-foreground">Test Coverage Increase</div>
-          </Card>
-          <Card className="text-center p-6 card-elegant">
-            <div className="text-3xl font-bold gradient-text mb-2">90%</div>
-            <div className="text-muted-foreground">Debug Time Reduction</div>
-          </Card>
+          {metrics.map((metric, index) => (
+            <Card key={index} className="text-center p-6 card-elegant group">
+              <div className="text-3xl font-bold gradient-text mb-1 font-heading">{metric.value}</div>
+              <div className="text-muted-foreground text-xs font-mono uppercase tracking-wider">{metric.label}</div>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

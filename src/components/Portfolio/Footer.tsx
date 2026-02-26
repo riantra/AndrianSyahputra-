@@ -1,201 +1,98 @@
 import { Button } from "@/components/ui/button";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Linkedin, 
-  Github, 
-  ArrowUp,
-  Heart
-} from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, ArrowUp } from "lucide-react";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const currentYear = new Date().getFullYear();
+  const scrollToSection = (href: string) => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   const quickLinks = [
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
-    { name: "Education", href: "#education" },
     { name: "Contact", href: "#contact" },
   ];
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      text: "andriancodings@gmail.com",
-      href: "mailto:andriancodings@gmail.com"
-    },
-    {
-      icon: Phone,
-      text: "+62 822-8473-6764",
-      href: "tel:+6282284736764"
-    },
-    {
-      icon: MapPin,
-      text: "Bandung, Indonesia",
-      href: "https://maps.google.com/?q=Bandung,Indonesia"
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: Linkedin,
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/riantra"
-    },
-    {
-      icon: Github,
-      name: "GitHub",
-      href: "https://github.com/andriantra"
-    },
-    {
-      icon: Mail,
-      name: "Email",
-      href: "mailto:andriancodings@gmail.com"
-    }
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <footer className="bg-foreground text-background relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-40 h-40 bg-primary rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-56 h-56 bg-accent rounded-full blur-3xl"></div>
-      </div>
+    <footer className="relative overflow-hidden" style={{ background: 'var(--gradient-dark)' }}>
+      <div className="absolute inset-0 tech-grid opacity-5"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Main Footer Content */}
-        <div className="py-16 grid lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-1 space-y-6">
+        <div className="py-16 grid lg:grid-cols-4 gap-10">
+          {/* Brand */}
+          <div className="lg:col-span-1 space-y-5">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">AS</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'var(--gradient-primary)' }}>
+                <span className="text-white font-bold font-heading">AS</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Andrian Syahputra</h3>
-                <p className="text-background/70">QA Engineer</p>
+                <h3 className="text-lg font-bold text-white font-heading">Andrian Syahputra</h3>
+                <p className="text-white/50 text-xs font-mono">PM & QA Engineer</p>
               </div>
             </div>
-            
-            <p className="text-background/70 leading-relaxed">
-              Passionate about delivering exceptional software quality through innovative 
-              testing strategies and cutting-edge automation frameworks.
+            <p className="text-white/50 text-sm leading-relaxed">
+              AI-focused QA Engineer turned Project Manager. Delivering software excellence 
+              through innovative testing and strategic leadership.
             </p>
-
-            <div className="space-y-3">
-              {contactInfo.map((contact, index) => (
-                <a
-                  key={index}
-                  href={contact.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-background/70 hover:text-background transition-colors"
-                >
-                  <contact.icon className="w-4 h-4" />
-                  <span className="text-sm">{contact.text}</span>
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold">Quick Links</h4>
-            <div className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollToSection(link.href)}
-                  className="block text-background/70 hover:text-background transition-colors text-sm text-left"
-                >
+          <div className="space-y-5">
+            <h4 className="text-sm font-bold text-white font-heading uppercase tracking-wider">Navigation</h4>
+            <div className="space-y-2">
+              {quickLinks.map((link, i) => (
+                <button key={i} onClick={() => scrollToSection(link.href)} className="block text-white/50 hover:text-white transition-colors text-sm">
                   {link.name}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Services */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold">Expertise</h4>
-            <div className="space-y-3 text-sm text-background/70">
-              <p>Quality Assurance</p>
-              <p>Test Automation</p>
-              <p>API Testing</p>
-              <p>Performance Testing</p>
-              <p>Mobile Testing</p>
-              <p>AI/ML Testing</p>
-              <p>Process Optimization</p>
-            </div>
-          </div>
-
-          {/* Connect */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold">Let's Connect</h4>
-            <p className="text-background/70 text-sm leading-relaxed">
-              Ready to work together? Let's discuss your QA needs and explore 
-              how I can help deliver exceptional software quality.
-            </p>
-            
-            <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center hover:bg-background/20 transition-colors group"
-                  aria-label={social.name}
-                >
-                  <social.icon className="w-5 h-5 text-background/70 group-hover:text-background transition-colors" />
+          {/* Contact */}
+          <div className="space-y-5">
+            <h4 className="text-sm font-bold text-white font-heading uppercase tracking-wider">Contact</h4>
+            <div className="space-y-3">
+              {[
+                { icon: Mail, text: "andriancodings@gmail.com", href: "mailto:andriancodings@gmail.com" },
+                { icon: Phone, text: "+62 822-8473-6764", href: "tel:+6282284736764" },
+                { icon: MapPin, text: "Bandung, Indonesia", href: "#" },
+              ].map((item, i) => (
+                <a key={i} href={item.href} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm">
+                  <item.icon className="w-3.5 h-3.5" />
+                  <span className="font-mono text-xs">{item.text}</span>
                 </a>
               ))}
             </div>
+          </div>
 
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="bg-transparent border-background/30 text-background hover:bg-background hover:text-foreground"
-              onClick={() => scrollToSection("#contact")}
-            >
-              <Mail className="w-4 h-4 mr-2" />
-              Get In Touch
+          {/* Social */}
+          <div className="space-y-5">
+            <h4 className="text-sm font-bold text-white font-heading uppercase tracking-wider">Connect</h4>
+            <div className="flex gap-3">
+              {[
+                { icon: Linkedin, href: "https://linkedin.com/in/riantra" },
+                { icon: Github, href: "https://github.com/andriantra" },
+                { icon: Mail, href: "mailto:andriancodings@gmail.com" },
+              ].map((social, i) => (
+                <a key={i} href={social.href} target="_blank" rel="noopener noreferrer"
+                  className="w-9 h-9 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors">
+                  <social.icon className="w-4 h-4 text-white/60" />
+                </a>
+              ))}
+            </div>
+            <Button variant="outline" size="sm" className="bg-transparent border-white/10 text-white/70 hover:bg-white/5 hover:text-white text-xs"
+              onClick={() => scrollToSection("#contact")}>
+              <Mail className="w-3 h-3 mr-1" /> Get In Touch
             </Button>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="py-8 border-t border-background/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2 text-background/70 text-sm">
-              <span>© {currentYear} Andrian Syahputra.</span>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <span className="text-background/70 text-sm">Scroll to top</span>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={scrollToTop}
-                className="bg-transparent border-background/30 text-background hover:bg-background hover:text-foreground"
-              >
-                <ArrowUp className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
+        <div className="py-6 border-t border-white/10 flex justify-between items-center">
+          <span className="text-white/30 text-xs font-mono">© {currentYear} Andrian Syahputra</span>
+          <Button size="sm" variant="ghost" onClick={scrollToTop} className="text-white/30 hover:text-white/60 hover:bg-white/5">
+            <ArrowUp className="w-4 h-4" />
+          </Button>
         </div>
       </div>
     </footer>

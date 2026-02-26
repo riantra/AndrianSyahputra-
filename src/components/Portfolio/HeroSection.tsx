@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Download, Mail, MapPin, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 const HeroSection = () => {
@@ -11,8 +11,6 @@ const HeroSection = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      // Show success message
       toast.success('CV download started!');
     } catch (error) {
       console.error('Error downloading CV:', error);
@@ -26,43 +24,51 @@ const HeroSection = () => {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
   return (
     <section className="section-hero relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+      {/* Animated grid */}
+      <div className="absolute inset-0 tech-grid opacity-20"></div>
       
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-accent rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-32 right-16 w-16 h-16 bg-primary rounded-full opacity-30 animate-bounce"></div>
-      
+      {/* Floating orbs */}
+      <div className="absolute top-1/4 left-[10%] w-64 h-64 bg-accent/20 rounded-full blur-[100px] animate-float"></div>
+      <div className="absolute bottom-1/4 right-[10%] w-80 h-80 bg-primary-variant/20 rounded-full blur-[120px] animate-float" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[140px] animate-float" style={{ animationDelay: '4s' }}></div>
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left space-y-8">
+          <div className="text-center lg:text-left space-y-8 animate-slide-up">
+            {/* Status badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect text-sm text-white/90">
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+              <span className="font-mono text-xs tracking-wider uppercase">Open to Opportunities</span>
+            </div>
+
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                Hi, I'm <span className="gradient-text">Andrian</span>
+              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+                Andrian<br />
+                <span className="text-accent">Syahputra</span>
               </h1>
-              <p className="text-xl lg:text-2xl text-white/90 font-medium">
-                Quality Assurance Engineer
+              <p className="text-xl lg:text-2xl text-white/80 font-medium font-heading">
+                AI-Focused QA Engineer → Project Manager
               </p>
-              <div className="flex items-center justify-center lg:justify-start gap-2 text-white/80">
-                <MapPin className="w-5 h-5" />
-                <span>Bandung, Indonesia</span>
+              <div className="flex items-center justify-center lg:justify-start gap-2 text-white/60 text-sm">
+                <MapPin className="w-4 h-4" />
+                <span className="font-mono">Bandung, Indonesia</span>
               </div>
             </div>
             
-            <p className="text-lg text-white/80 leading-relaxed max-w-xl">
-              Expert in AI/ML testing, test automation, and quality assurance across web, mobile, and enterprise applications. 
-              Proven track record in implementing cutting-edge testing solutions, from AI-powered test automation to 
-              performance and security testing. Passionate about delivering flawless user experiences through 
-              comprehensive testing strategies and innovative quality assurance approaches.
+            <p className="text-base lg:text-lg text-white/70 leading-relaxed max-w-xl">
+              3+ years delivering AI-powered intelligence platforms, GPS-integrated logistics systems, 
+              and enterprise solutions. Proven track record with 95–98% bug-free releases, 
+              60% test coverage increase, and 50% faster defect detection.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                className="btn-primary glass-effect group"
+                className="btn-primary glass-effect group text-base"
                 onClick={scrollToContact}
               >
                 <Mail className="w-5 h-5 mr-2" />
@@ -72,7 +78,7 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="bg-white text-foreground hover:bg-white/90 border-white/30 hover:border-white/50"
+                className="bg-white/5 text-white hover:bg-white/10 border-white/20 hover:border-white/40 backdrop-blur-sm rounded-xl"
                 onClick={handleDownloadCV}
               >
                 <Download className="w-5 h-5 mr-2" />
@@ -81,43 +87,47 @@ const HeroSection = () => {
             </div>
             
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold text-white">2+</div>
-                <div className="text-white/70">Years in QA</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold text-white">95%+</div>
-                <div className="text-white/70">Test Coverage</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold text-white">10+</div>
-                <div className="text-white/70">Projects Tested</div>
-              </div>
+            <div className="grid grid-cols-4 gap-4 pt-8 border-t border-white/10">
+              {[
+                { value: "3+", label: "Years" },
+                { value: "98%", label: "Bug-Free" },
+                { value: "10+", label: "Projects" },
+                { value: "80%", label: "Efficiency↑" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center lg:text-left">
+                  <div className="text-2xl lg:text-3xl font-bold text-white font-heading">{stat.value}</div>
+                  <div className="text-white/50 text-xs font-mono uppercase tracking-wider">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
           
           {/* Profile Image */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="relative">
-              <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
+              <div className="w-72 h-72 lg:w-[420px] lg:h-[420px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                 <img 
                   src="/lovable-uploads/2630c189-2ed3-41e5-a9a5-f58c2b7cb0c0.png" 
-                  alt="Andrian Syahputra - Professional Portrait"
+                  alt="Andrian Syahputra - AI-Focused QA Engineer & Project Manager"
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Glow Effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent opacity-20 blur-xl"></div>
+              {/* Decorative elements */}
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-accent/30 rounded-2xl"></div>
+              <div className="absolute -top-4 -right-4 w-16 h-16 border-2 border-primary/30 rounded-xl"></div>
+              <div className="absolute top-8 -left-8 flex items-center gap-2 px-3 py-2 glass-effect rounded-xl text-white text-xs font-mono">
+                <Sparkles className="w-3 h-3 text-accent" />
+                AI Testing Expert
+              </div>
             </div>
           </div>
         </div>
       </div>
       
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="w-5 h-8 border border-white/20 rounded-full flex justify-center">
+          <div className="w-0.5 h-2 bg-white/60 rounded-full mt-1.5 animate-pulse"></div>
         </div>
       </div>
     </section>
