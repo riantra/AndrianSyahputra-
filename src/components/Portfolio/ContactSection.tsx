@@ -4,196 +4,51 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Linkedin, 
-  Github, 
-  Send,
-  Download,
-  MessageSquare,
-  Clock,
-  Globe,
-  Loader2,
-  CheckCircle2,
-  AlertCircle
-} from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Send, Clock, Globe, MessageSquare, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactSection = () => {
   const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "andriancodings@gmail.com",
-      link: "mailto:andriancodings@gmail.com"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+62 822-8473-6764",
-      link: "tel:+6282284736764"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Bandung, Indonesia",
-      link: "https://maps.google.com/?q=Bandung,Indonesia"
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "linkedin.com/in/riantra",
-      link: "https://linkedin.com/in/riantra"
-    }
+    { icon: Mail, label: "Email", value: "andriancodings@gmail.com", link: "mailto:andriancodings@gmail.com" },
+    { icon: Phone, label: "Phone", value: "+62 822-8473-6764", link: "tel:+6282284736764" },
+    { icon: MapPin, label: "Location", value: "Bandung, Indonesia", link: "https://maps.google.com/?q=Bandung,Indonesia" },
+    { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/riantra", link: "https://linkedin.com/in/riantra" }
   ];
 
-  const availability = [
-    {
-      icon: Clock,
-      title: "Response Time",
-      value: "Within 24 hours",
-      description: "I typically respond to messages within 24 hours during business days"
-    },
-    {
-      icon: Globe,
-      title: "Time Zone",
-      value: "GMT+7 (WIB)",
-      description: "Western Indonesia Time - Available for international collaboration"
-    },
-    {
-      icon: MessageSquare,
-      title: "Preferred Contact",
-      value: "Email or LinkedIn",
-      description: "For professional inquiries, email works best for detailed discussions"
-    }
-  ];
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    subject: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleDownloadCV = () => {
-    try {
-      // Create a temporary anchor element
-      const link = document.createElement('a');
-      link.href = '/AndrianSyahputra_CV.pdf';
-      link.download = 'AndrianSyahputra_CV.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      // Optional: Show success message
-      toast.success('CV download started!');
-    } catch (error) {
-      console.error('Error downloading CV:', error);
-      toast.error('Failed to download CV. Please try again.');
-    }
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
-    // Basic validation
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       setError('Please fill in all required fields');
       return;
     }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       setError('Please enter a valid email address');
       return;
     }
-
     try {
       setIsSubmitting(true);
-      setError('');
-      
-      // EmailJS configuration
-      const serviceId = 'AndrianPortopolioWeb';
-      const templateId = 'template_son11pl';
-      const publicKey = 'h1VrIzvlwec9m90Vw';
-      
-      // Initialize EmailJS with your public key
-      emailjs.init(publicKey);
-      
-      console.log('Sending email with data:', {
-        from_name: formData.name,
-        from_email: formData.email,
-        from_company: formData.company,  // Changed from 'company' to 'from_company'
-        subject: formData.subject,
-        message: formData.message,
-        to_email: 'andriancodings@gmail.com'
-      });
-      
-      try {
-        const response = await emailjs.send(
-          serviceId,
-          templateId,
-          {
-            from_name: formData.name,
-            from_email: formData.email,
-            company: formData.company,
-            subject: formData.subject,
-            message: formData.message,
-            to_email: 'andriancodings@gmail.com'
-          },
-          publicKey
-        );
-
-        setIsSuccess(true);
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          subject: '',
-          message: ''
-        });
-        
-        toast.success('Message sent successfully!');
-      } catch (error) {
-        setError('Failed to send message. Please try again.');
-        toast.error('Failed to send message');
-      } finally {
-        setIsSubmitting(false);
-      }
-      
+      emailjs.init('h1VrIzvlwec9m90Vw');
+      await emailjs.send('AndrianPortopolioWeb', 'template_son11pl', {
+        from_name: formData.name, from_email: formData.email,
+        company: formData.company, subject: formData.subject,
+        message: formData.message, to_email: 'andriancodings@gmail.com'
+      }, 'h1VrIzvlwec9m90Vw');
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', company: '', subject: '', message: '' });
       toast.success('Message sent successfully!');
-      
-      // Reset success state after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 5000);
-      
+      setTimeout(() => setIsSuccess(false), 5000);
     } catch (err: any) {
-      console.error('Error sending email:', {
-        error: err,
-        status: err.status,
-        text: err.text,
-        response: err.response
-      });
-      
-      const errorMessage = err.text || err.message || 'Failed to send message. Please try again later.';
-      setError(errorMessage);
+      setError(err.text || 'Failed to send message. Please try again.');
       toast.error('Failed to send message');
     } finally {
       setIsSubmitting(false);
@@ -201,177 +56,96 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
-      </div>
+    <section className="py-24 bg-muted/30 tech-grid relative overflow-hidden">
+      <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent/5 rounded-full blur-[100px]"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+        <div className="text-center mb-16 space-y-4">
+          <p className="font-mono text-xs text-accent uppercase tracking-[0.2em]">Get In Touch</p>
+          <h2 className="text-4xl lg:text-5xl font-bold">
             Let's <span className="gradient-text">Connect</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to discuss your QA needs or explore collaboration opportunities? 
-            I'm always excited to work on challenging projects and deliver exceptional results.
-          </p>
+          <div className="section-divider mt-4"></div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* Contact Information */}
-          <div className="lg:col-span-1 space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-              <div className="space-y-4">
-                {contactInfo.map((contact, index) => (
-                  <a 
-                    key={index}
-                    href={contact.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-muted/50 transition-colors group"
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <contact.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold">{contact.label}</p>
-                      <p className="text-muted-foreground">{contact.value}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Availability Info */}
-            <div>
-              <h4 className="text-lg font-bold mb-4">Availability</h4>
-              <div className="space-y-4">
-                {availability.map((info, index) => (
-                  <div key={index} className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <info.icon className="w-4 h-4 text-primary" />
-                      <span className="font-semibold text-sm">{info.title}</span>
-                    </div>
-                    <p className="text-primary font-medium">{info.value}</p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {info.description}
-                    </p>
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              {contactInfo.map((contact, i) => (
+                <a key={i} href={contact.link} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-2xl hover:bg-background/80 transition-all group">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform" style={{ background: 'var(--gradient-primary)' }}>
+                    <contact.icon className="w-5 h-5 text-white" />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <p className="font-semibold text-sm">{contact.label}</p>
+                    <p className="text-muted-foreground text-xs font-mono">{contact.value}</p>
+                  </div>
+                </a>
+              ))}
             </div>
 
-
+            <div className="space-y-4">
+              {[
+                { icon: Clock, title: "Response Time", value: "Within 24 hours" },
+                { icon: Globe, title: "Time Zone", value: "GMT+7 (WIB)" },
+                { icon: MessageSquare, title: "Preferred", value: "Email or LinkedIn" },
+              ].map((info, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <info.icon className="w-4 h-4 text-accent" />
+                  <div>
+                    <span className="text-xs text-muted-foreground">{info.title}: </span>
+                    <span className="text-xs font-medium font-mono">{info.value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Form */}
           <div id="contact-form" className="lg:col-span-2">
             <Card className="card-elegant p-8">
-              <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <h3 className="text-xl font-bold mb-6 font-heading">Send a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-5">
                 {error && (
-                  <div className="bg-destructive/10 text-destructive p-4 rounded-lg flex items-start gap-2">
-                    <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <span>{error}</span>
+                  <div className="bg-destructive/10 text-destructive p-3 rounded-xl flex items-center gap-2 text-sm">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" /><span>{error}</span>
                   </div>
                 )}
-                
                 {isSuccess && (
-                  <div className="bg-green-50 text-green-700 p-4 rounded-lg flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <span>Your message has been sent successfully! I'll get back to you soon.</span>
+                  <div className="bg-accent/10 text-accent p-3 rounded-xl flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0" /><span>Message sent! I'll get back to you soon.</span>
                   </div>
                 )}
-                
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold">Full Name *</label>
-                    <Input 
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your full name"
-                      className="h-12"
-                      disabled={isSubmitting}
-                    />
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold font-heading">Full Name *</label>
+                    <Input name="name" value={formData.name} onChange={handleChange} placeholder="Your name" className="h-11 rounded-xl text-sm" disabled={isSubmitting} />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold">Email Address *</label>
-                    <Input 
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      type="email"
-                      placeholder="your.email@example.com"
-                      className="h-12"
-                      disabled={isSubmitting}
-                    />
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold font-heading">Email *</label>
+                    <Input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="you@example.com" className="h-11 rounded-xl text-sm" disabled={isSubmitting} />
                   </div>
                 </div>
-
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold">Company</label>
-                    <Input 
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Your company name"
-                      className="h-12"
-                      disabled={isSubmitting}
-                    />
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold font-heading">Company</label>
+                    <Input name="company" value={formData.company} onChange={handleChange} placeholder="Company name" className="h-11 rounded-xl text-sm" disabled={isSubmitting} />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold">Subject *</label>
-                    <Input 
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="Project discussion, Job opportunity, etc."
-                      className="h-12"
-                      disabled={isSubmitting}
-                    />
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold font-heading">Subject *</label>
+                    <Input name="subject" value={formData.subject} onChange={handleChange} placeholder="Project discussion..." className="h-11 rounded-xl text-sm" disabled={isSubmitting} />
                   </div>
                 </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold">Message *</label>
-                  <Textarea 
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell me about your project, requirements, or how I can help you..."
-                    className="min-h-[120px] resize-none"
-                    disabled={isSubmitting}
-                  />
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold font-heading">Message *</label>
+                  <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project..." className="min-h-[100px] resize-none rounded-xl text-sm" disabled={isSubmitting} />
                 </div>
-
-                <div className="space-y-4">
-                  <p className="text-xs text-muted-foreground">
-                    * Required fields. I'll get back to you within 24 hours.
-                  </p>
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    className="btn-primary w-full md:w-auto"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </div>
+                <Button type="submit" size="lg" className="btn-primary w-full md:w-auto" disabled={isSubmitting}>
+                  {isSubmitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sending...</> : <><Send className="w-4 h-4 mr-2" />Send Message</>}
+                </Button>
               </form>
             </Card>
           </div>
